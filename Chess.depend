@@ -14,7 +14,7 @@
 1649612217 d:\cities - skylines\projects\chess\board.c
 	<stdio.h>
 
-1650695445 d:\cities - skylines\projects\chess\board.h
+1652457915 d:\cities - skylines\projects\chess\board.h
 	"figure.h"
 
 1650695010 source:d:\cities - skylines\projects\chess\board.c
@@ -28,7 +28,7 @@
 	"cell.h"
 	"figure.h"
 
-1650703088 d:\cities - skylines\projects\chess\figure.h
+1652457989 d:\cities - skylines\projects\chess\figure.h
 	<graphics.h>
 
 1650696175 source:d:\cities - skylines\projects\chess\cell.c
@@ -38,7 +38,7 @@
 	<graphics.h>
 	<stdio.h>
 
-1650694633 d:\cities - skylines\projects\chess\common.h
+1652457937 d:\cities - skylines\projects\chess\common.h
 
 1650695440 d:\cities - skylines\projects\chess\cell.h
 	"common.h"

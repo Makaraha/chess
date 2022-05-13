@@ -1,7 +1,4 @@
-#include <graphics.h>
-#include "common.h"
-#include "cell.h"
-#include "figure.h"
+#include "chess.h"
 
 void draw_figure(int cellX, int cellY, figure figure)
 {

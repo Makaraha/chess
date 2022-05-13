@@ -1,6 +1,4 @@
-#include <graphics.h>
-#include "cell.h"
-#include "board.h"
+#include "chess.h"
 
 void render_board()
 {

@@ -1,8 +1,4 @@
-#include <graphics.h>
-#include <stdio.h>
-#include "board.h"
-#include "cell.h"
-#include "figure.h"
+#include "chess.h"
 
 void init_graph()
 {

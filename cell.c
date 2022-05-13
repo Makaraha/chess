@@ -1,8 +1,4 @@
-#include "common.h"
-#include "board.h"
-#include "cell.h"
-#include <graphics.h>
-#include <stdio.h>
+#include "chess.h"
 
 int get_cell_color(int cellX, int cellY)
 {
