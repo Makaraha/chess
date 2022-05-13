@@ -57,11 +57,11 @@ void render_board();
 
 //figure
 void draw_figure(int cellX, int cellY, figure figure);
-void draw_pawn(int x, int y, int color);
-void draw_king(int x, int y, int color);
-void draw_queen(int x, int y, int color);
-void draw_rook(int x, int y, int color);
-void draw_knight(int x, int y, int color);
-void draw_bishop(int x, int y, int color);
+void draw_pawn(int x, int y);
+void draw_king(int x, int y);
+void draw_queen(int x, int y);
+void draw_rook(int x, int y);
+void draw_knight(int x, int y);
+void draw_bishop(int x, int y);
 
 #endif // CHESS_H_INCLUDED
