@@ -1,0 +1,45 @@
+# depslib dependency file v1.0
+1650703909 source:d:\cities - skylines\projects\chess\main.c
+	<graphics.h>
+	<stdio.h>
+	"board.h"
+	"cell.h"
+	"figure.h"
+
+1266061814 d:\codeblocks-ep\sdk\winbgim\include\graphics.h
+	<windows.h>
+	<limits.h>
+	<sstream>
+
+1649612217 d:\cities - skylines\projects\chess\board.c
+	<stdio.h>
+
+1650695445 d:\cities - skylines\projects\chess\board.h
+	"figure.h"
+
+1650695010 source:d:\cities - skylines\projects\chess\board.c
+	<graphics.h>
+	"cell.h"
+	"board.h"
+
+1650703916 source:d:\cities - skylines\projects\chess\figure.c
+	<graphics.h>
+	"common.h"
+	"cell.h"
+	"figure.h"
+
+1650703088 d:\cities - skylines\projects\chess\figure.h
+	<graphics.h>
+
+1650696175 source:d:\cities - skylines\projects\chess\cell.c
+	"common.h"
+	"board.h"
+	"cell.h"
+	<graphics.h>
+	<stdio.h>
+
+1650694633 d:\cities - skylines\projects\chess\common.h
+
+1650695440 d:\cities - skylines\projects\chess\cell.h
+	"common.h"
+
