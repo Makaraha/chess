@@ -28,123 +28,193 @@ void draw_figure(int cellX, int cellY, figure figure)
 void draw_pawn(int left, int top)
 {
     int plg[36];
+
     plg[0] = left + 25;
-    plg[1] = top + 15;
+    plg[1] = top + 20;
+
     plg[2] = left + 35;
-    plg[3] = top + 15;
-    plg[4] = left + 40;
-    plg[5] = top + 20;
-    plg[6] = left + 40;
-    plg[7] = top + 25;
+    plg[3] = top + 20;
+
+    plg[4] = left + 38;
+    plg[5] = top + 23;
+
+    plg[6] = left + 38;
+    plg[7] = top + 29;
+
     plg[8] = left + 35;
-    plg[9] = top + 30;
-    plg[10] = left + 40;
-    plg[11] = top + 35;
-    plg[12] = left + 35;
-    plg[13] = top + 35;
-    plg[14] = left + 35;
-    plg[15] = top + 40;
-    plg[16] = left + 40;
-    plg[17] = top + 45;
-    plg[18] = left + 45;
+    plg[9] = top + 31;
+
+    plg[10] = left + 39;
+    plg[11] = top + 36;
+
+    plg[12] = left + 36;
+    plg[13] = top + 38;
+
+    plg[14] = left + 38;
+    plg[15] = top + 48;
+
+    plg[16] = left + 42;
+    plg[17] = top + 52;
+
+    plg[18] = left + 42;
     plg[19] = top + 55;
-    plg[20] = left + 15;
+
+    plg[20] = left + 18;
     plg[21] = top + 55;
-    plg[22] = left + 20;
-    plg[23] = top + 45;
-    plg[24] = left + 25;
-    plg[25] = top + 40;
-    plg[26] = left + 25;
-    plg[27] = top + 35;
-    plg[28] = left + 20;
-    plg[29] = top + 35;
+
+    plg[22] = left + 18;
+    plg[23] = top + 52;
+
+    plg[24] = left + 22;
+    plg[25] = top + 48;
+
+    plg[26] = left + 24;
+    plg[27] = top + 38;
+
+    plg[28] = left + 21;
+    plg[29] = top + 36;
+
     plg[30] = left + 25;
-    plg[31] = top + 30;
-    plg[32] = left + 20;
-    plg[33] = top + 25;
-    plg[34] = left + 20;
-    plg[35] = top + 20;
+    plg[31] = top + 31;
+
+    plg[32] = left + 22;
+    plg[33] = top + 29;
+
+    plg[34] = left + 22;
+    plg[35] = top + 23;
+
     fillpoly(18, plg);
 }
 
 void draw_bishop(int left, int top)
 {
-    int plg[30];
+    int plg[38];
+
     plg[0] = left + 30;
     plg[1] = top + 10;
+
     plg[2] = left + 25;
     plg[3] = top + 15;
+
     plg[4] = left + 30;
     plg[5] = top + 20;
+
     plg[6] = left + 25;
     plg[7] = top + 20;
+
     plg[8] = left + 20;
     plg[9] = top + 25;
+
     plg[10] = left + 25;
     plg[11] = top + 30;
+
     plg[12] = left + 25;
     plg[13] = top + 40;
-    plg[14] = left + 15;
-    plg[15] = top + 55;
-    plg[16] = left + 45;
-    plg[17] = top + 55;
-    plg[18] = left + 35;
-    plg[19] = top + 40;
-    plg[20] = left + 35;
-    plg[21] = top + 40;
-    plg[22] = left + 35;
-    plg[23] = top + 30;
-    plg[24] = left + 40;
-    plg[25] = top + 25;
+
+    plg[14] = left + 22;
+    plg[15] = top + 48;
+
+    plg[16] = left + 18;
+    plg[17] = top + 53;
+
+    plg[18] = left + 18;
+    plg[19] = top + 55;
+
+    plg[20] = left + 42;
+    plg[21] = top + 55;
+
+    plg[22] = left + 42;
+    plg[23] = top + 53;
+
+    plg[24] = left + 38;
+    plg[25] = top + 48;
+
     plg[26] = left + 35;
-    plg[27] = top + 20;
+    plg[27] = top + 40;
+
     plg[28] = left + 35;
-    plg[29] = top + 15;
-    fillpoly(15, plg);
+    plg[29] = top + 40;
+
+    plg[30] = left + 35;
+    plg[31] = top + 30;
+
+    plg[32] = left + 40;
+    plg[33] = top + 25;
+
+    plg[34] = left + 35;
+    plg[35] = top + 20;
+
+    plg[36] = left + 35;
+    plg[37] = top + 15;
+
+    fillpoly(19, plg);
 }
 
 void draw_rook(int left, int top)
 {
-    int plg[38];
-    plg[0] = left + 15;
-    plg[1] = top + 15;
-    plg[2] = left + 15;
-    plg[3] = top + 25;
-    plg[4] = left + 20;
-    plg[5] = top + 30;
-    plg[6] = left + 20;
-    plg[7] = top + 40;
-    plg[8] = left + 15;
-    plg[9] = top + 55;
-    plg[10] = left + 45;
-    plg[11] = top + 55;
-    plg[12] = left + 40;
-    plg[13] = top + 40;
-    plg[14] = left + 40;
-    plg[15] = top + 30;
-    plg[16] = left + 45;
-    plg[17] = top + 25;
-    plg[18] = left + 45;
-    plg[19] = top + 15;
+    int plg[44];
+
+    plg[0] = left + 20;
+    plg[1] = top + 16;
+
+    plg[2] = left + 24;
+    plg[3] = top + 16;
+
+    plg[4] = left + 24;
+    plg[5] = top + 20;
+
+    plg[6] = left + 28;
+    plg[7] = top + 20;
+
+    plg[8] = left + 28;
+    plg[9] = top + 16;
+
+    plg[10] = left + 32;
+    plg[11] = top + 16;
+
+    plg[12] = left + 32;
+    plg[13] = top + 20;
+
+    plg[14] = left + 36;
+    plg[15] = top + 20;
+
+    plg[16] = left + 36;
+    plg[17] = top + 16;
+
+    plg[18] = left + 40;
+    plg[19] = top + 16;
+
     plg[20] = left + 40;
-    plg[21] = top + 15;
-    plg[22] = left + 40;
-    plg[23] = top + 20;
-    plg[24] = left + 35;
-    plg[25] = top + 20;
-    plg[26] = left + 35;
-    plg[27] = top + 15;
-    plg[28] = left + 25;
-    plg[29] = top + 15;
-    plg[30] = left + 25;
-    plg[31] = top + 20;
-    plg[32] = left + 25;
-    plg[33] = top + 20;
-    plg[34] = left + 20;
-    plg[35] = top + 20;
-    plg[36] = left + 20;
-    plg[37] = top + 15;
-    fillpoly(19, plg);
+    plg[21] = top + 24;
+
+    plg[22] = left + 38;
+    plg[23] = top + 30;
+
+    plg[24] = left + 38;
+    plg[25] = top + 46;
+
+    plg[26] = left + 40;
+    plg[27] = top + 50;
+
+    plg[28] = left + 40;
+    plg[29] = top + 55;
+
+    plg[30] = left + 20;
+    plg[31] = top + 55;
+
+    plg[32] = left + 20;
+    plg[33] = top + 50;
+
+    plg[34] = left + 22;
+    plg[35] = top + 46;
+
+    plg[36] = left + 22;
+    plg[37] = top + 30;
+
+    plg[38] = left + 20;
+    plg[39] = top + 24;
+
+    fillpoly(20, plg);
 }
 
 void draw_knight(int left, int top)
