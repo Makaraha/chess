@@ -2,7 +2,7 @@
 
 int get_cell_color(int cellX, int cellY)
 {
-    if(cellX + cellY % 2 == 0)
+    if(cellX % 2 != cellY % 2)
         return LIGHTGRAY;
     return DARKGRAY;
 }
@@ -27,6 +27,16 @@ rect get_cell_coords(int cellX, int cellY)
     return rect;
 }
 
+point get_cell_by_coords(int x, int y)
+{
+    point cellInd;
+    int tempX = x - BOARD_LEFT;
+    int tempY = BOARD_BOTTOM - y;
+    cellInd.x = tempX / CELL_SIZE;
+    cellInd.y = -(tempY / CELL_SIZE - 7);
+    return cellInd;
+}
+
 void clear_cell(int cellX, int cellY)
 {
     int color = get_cell_color(cellX, cellY);
@@ -34,4 +44,27 @@ void clear_cell(int cellX, int cellY)
     setfillstyle(SOLID_FILL, color);
     bar(rect.left, rect.top, rect.right, rect.bottom);
     printf("%d %d %d %d", rect.left, rect.top, rect.right, rect.bottom);
+}
+
+void mark_cell(int cellX, int cellY)
+{
+    rect cell = get_cell_coords(cellX, cellY);
+    setcolor(LIGHTGREEN);
+    rectangle(cell.left, cell.top, cell.right, cell.bottom);
+}
+
+void unmark_cell(int cellX, int cellY)
+{
+    rect cell = get_cell_coords(cellX, cellY);
+    int color = get_cell_color(cellX, cellY);
+    setcolor(color);
+    rectangle(cell.left, cell.top, cell.right, cell.bottom);
+}
+
+void unmark_cells()
+{
+    int i, j;
+    for(i = 0; i < 8; i++)
+        for(j = 0; j < 8; j++)
+            unmark_cell(i, j);
 }
