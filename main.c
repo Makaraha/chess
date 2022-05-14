@@ -25,6 +25,8 @@ int main()
     draw_figure(3, 3, pawnFigure);
     pawnFigure.type = king;
     draw_figure(3, 4, pawnFigure);
+    pawnFigure.type = queen;
+    draw_figure(3, 5, pawnFigure);
 
     char ch = getch();
     closegraph();
