@@ -19,6 +19,9 @@ void draw_figure(int cellX, int cellY, figure figure)
         case knight:
             draw_knight(cell.left, cell.top);
             break;
+        case king:
+            draw_king(cell.left, cell.top);
+            break;
     }
 }
 
@@ -181,6 +184,59 @@ void draw_knight(int left, int top)
     plg[31] = top + 30;
     plg[32] = left + 30;
     plg[33] = top + 35;
-
     fillpoly(17, plg);
+}
+
+void draw_king(int left, int top)
+{
+    int plg[48];
+    plg[0] = left + 32;
+    plg[1] = top + 10;
+    plg[2] = left + 32;
+    plg[3] = top + 15;
+    plg[4] = left + 36;
+    plg[5] = top + 15;
+    plg[6] = left + 36;
+    plg[7] = top + 18;
+    plg[8] = left + 32;
+    plg[9] = top + 18;
+    plg[10] = left + 32;
+    plg[11] = top + 22;
+    plg[12] = left + 38;
+    plg[13] = top + 22;
+    plg[14] = left + 40;
+    plg[15] = top + 26;
+    plg[16] = left + 36;
+    plg[17] = top + 34;
+    plg[18] = left + 36;
+    plg[19] = top + 46;
+    plg[20] = left + 40;
+    plg[21] = top + 49;
+    plg[22] = left + 42;
+    plg[23] = top + 55;
+    plg[24] = left + 18;
+    plg[25] = top + 55;
+    plg[26] = left + 20;
+    plg[27] = top + 49;
+    plg[28] = left + 24;
+    plg[29] = top + 46;
+    plg[30] = left + 24;
+    plg[31] = top + 34;
+    plg[32] = left + 20;
+    plg[33] = top + 26;
+    plg[34] = left + 22;
+    plg[35] = top + 22;
+    plg[36] = left + 28;
+    plg[37] = top + 22;
+    plg[38] = left + 28;
+    plg[39] = top + 18;
+    plg[40] = left + 24;
+    plg[41] = top + 18;
+    plg[42] = left + 24;
+    plg[43] = top + 15;
+    plg[44] = left + 28;
+    plg[45] = top + 15;
+    plg[46] = left + 28;
+    plg[47] = top + 10;
+    fillpoly(24, plg);
 }

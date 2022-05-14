@@ -23,6 +23,8 @@ int main()
     draw_figure(2, 2, pawnFigure);
     pawnFigure.type = knight;
     draw_figure(3, 3, pawnFigure);
+    pawnFigure.type = king;
+    draw_figure(3, 4, pawnFigure);
 
     char ch = getch();
     closegraph();
