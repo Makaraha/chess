@@ -56,6 +56,10 @@ void move_figure(int firstX, int firstY, int  secondX, int secondY);
 void change_current_move();
 void moves_reverse(bool** moves);
 void get_knight_moves(int cellX, int cellY, playerTeam team, bool** moves);
+void get_bishop_moves(int cellX, int cellY, playerTeam, bool** moves);
+void get_rook_moves(int cellX, int cellY, playerTeam team, bool** moves);
+void get_queen_moves(int cellX, int cellY, playerTeam team, bool** moves);
+void get_king_moves(int cellX, int cellY, playerTeam team, bool** moves);
 
 //cell
 const int CELL_SIZE = 60;

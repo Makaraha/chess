@@ -43,6 +43,18 @@ bool** get_moves(int cellX, int cellY)
         case knight:
             get_knight_moves(cellX, cellY, fig.team, moves);
             break;
+        case bishop:
+            get_bishop_moves(cellX, cellY, fig.team, moves);
+            break;
+        case rook:
+            get_rook_moves(cellX, cellY, fig.team, moves);
+            break;
+        case queen:
+            get_queen_moves(cellX, cellY, fig.team, moves);
+            break;
+        case king:
+            get_king_moves(cellX, cellY, fig.team, moves);
+            break;
     }
 
     if(fig.team == black)
@@ -58,12 +70,8 @@ bool** get_moves(int cellX, int cellY)
 // Заполняет матрицу ходов пешки
 void get_pawn_moves(int cellX, int cellY, playerTeam team, bool** moves)
 {
-    printf("cur: %d %d\n", cellX, cellY);
-
-    if(cellY == 0)
-        return;
-
-    set_move_cell(cellX, cellY - 1, team, moves);
+    if(boardMap[cellX][cellY - 1].type == empty)
+        set_move_cell(cellX, cellY - 1, team, moves);
 
     if(cellY == 6 && moves[cellX][cellY - 1])
         set_move_cell(cellX, cellY - 2, team, moves);
@@ -87,6 +95,65 @@ void get_knight_moves(int cellX, int cellY, playerTeam team, bool** moves)
     set_move_cell(cellX + 1, cellY + 2, team, moves);
 }
 
+// Заполняет матрицу ходов слона
+void get_bishop_moves(int cellX, int cellY, playerTeam team, bool** moves)
+{
+    int i;
+    for(i = 1; i < 8; i++)
+    {
+        if(i == 1 || (is_cell_valid(cellX + i - 1, cellY + i - 1) && moves[cellX + i - 1][cellY + i - 1] && boardMap[cellX + i - 1][cellY + i - 1].type == empty))
+            set_move_cell(cellX + i, cellY + i, team, moves);
+
+        if(i == 1 || (is_cell_valid(cellX - i + 1, cellY - i + 1) && moves[cellX - i + 1][cellY - i + 1] && boardMap[cellX - i + 1][cellY - i + 1].type == empty))
+            set_move_cell(cellX - i, cellY - i, team, moves);
+
+        if(i == 1 || (is_cell_valid(cellX - i + 1, cellY + i - 1) && moves[cellX - i + 1][cellY + i - 1] && boardMap[cellX - i + 1][cellY + i - 1].type == empty))
+            set_move_cell(cellX - i, cellY + i, team, moves);
+
+        if(i == 1 || (is_cell_valid(cellX + i - 1, cellY - i + 1) && moves[cellX + i - 1][cellY - i + 1] && boardMap[cellX + i - 1][cellY - i + 1].type == empty))
+            set_move_cell(cellX + i, cellY - i, team, moves);
+    }
+}
+
+// Заполняет матрицу ходов ладьи
+void get_rook_moves(int cellX, int cellY, playerTeam team, bool** moves)
+{
+    int i;
+    for(i = 1; i < 8; i++)
+    {
+        if(i == 1 || (is_cell_valid(cellX, cellY + i - 1) && moves[cellX][cellY + i - 1] && boardMap[cellX][cellY + i - 1].type == empty))
+            set_move_cell(cellX, cellY + i, team, moves);
+
+        if(i == 1 || (is_cell_valid(cellX - i + 1, cellY) && moves[cellX - i + 1][cellY] && boardMap[cellX - i + 1][cellY].type == empty))
+            set_move_cell(cellX - i, cellY, team, moves);
+
+        if(i == 1 || (is_cell_valid(cellX, cellY - i + 1) && moves[cellX][cellY - i + 1] && boardMap[cellX][cellY - i + 1].type == empty))
+            set_move_cell(cellX, cellY - i, team, moves);
+
+        if(i == 1 || (is_cell_valid(cellX + i - 1, cellY) && moves[cellX + i - 1][cellY] && boardMap[cellX + i - 1][cellY].type == empty))
+            set_move_cell(cellX + i, cellY, team, moves);
+    }
+}
+
+// Заполняет матрицу ходов ферзя
+void get_queen_moves(int cellX, int cellY, playerTeam team, bool** moves)
+{
+    get_bishop_moves(cellX, cellY, team, moves);
+    get_rook_moves(cellX, cellY, team, moves);
+}
+
+// Заполняет матрицу ходов короля
+void get_king_moves(int cellX, int cellY, playerTeam team, bool** moves)
+{
+    set_move_cell(cellX - 1, cellY - 1, team, moves);
+    set_move_cell(cellX - 1, cellY + 1, team, moves);
+    set_move_cell(cellX + 1, cellY - 1, team, moves);
+    set_move_cell(cellX + 1, cellY + 1, team, moves);
+    set_move_cell(cellX - 1, cellY, team, moves);
+    set_move_cell(cellX, cellY + 1, team, moves);
+    set_move_cell(cellX + 1, cellY, team, moves);
+    set_move_cell(cellX, cellY - 1, team, moves);
+}
 
 // Разрешает или запрещает ход в ячейку
 void set_move_cell(int cellX, int cellY, playerTeam team, bool** moves)
@@ -94,6 +161,7 @@ void set_move_cell(int cellX, int cellY, playerTeam team, bool** moves)
     if(is_cell_valid(cellX, cellY) && (boardMap[cellX][cellY].type == empty || boardMap[cellX][cellY].team != team))
         moves[cellX][cellY] = true;
 }
+
 
 // Проверяет валидность координат ячейки
 bool is_cell_valid(int cellX, int cellY)

@@ -49,7 +49,7 @@ void mark_cell(int cellX, int cellY)
 {
     rect cell = get_cell_coords(cellX, cellY);
     setcolor(LIGHTGREEN);
-    rectangle(cell.left, cell.top, cell.right, cell.bottom);
+    rectangle(cell.left + 4, cell.top + 4, cell.right - 4, cell.bottom - 4);
 }
 
 void unmark_cell(int cellX, int cellY)
@@ -57,7 +57,7 @@ void unmark_cell(int cellX, int cellY)
     rect cell = get_cell_coords(cellX, cellY);
     int color = get_cell_color(cellX, cellY);
     setcolor(color);
-    rectangle(cell.left, cell.top, cell.right, cell.bottom);
+    rectangle(cell.left + 4, cell.top + 4, cell.right - 4, cell.bottom - 4);
 }
 
 void unmark_cells()
