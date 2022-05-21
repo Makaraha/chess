@@ -57,6 +57,13 @@
 		<Unit filename="cell.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="chess.h" />
+		<Unit filename="clickhandler.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="common.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="common.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
@@ -67,6 +74,9 @@
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="moves.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions>

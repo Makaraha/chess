@@ -43,7 +43,6 @@ void clear_cell(int cellX, int cellY)
     rect rect = get_cell_coords(cellX, cellY);
     setfillstyle(SOLID_FILL, color);
     bar(rect.left, rect.top, rect.right, rect.bottom);
-    printf("%d %d %d %d", rect.left, rect.top, rect.right, rect.bottom);
 }
 
 void mark_cell(int cellX, int cellY)

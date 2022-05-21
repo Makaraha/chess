@@ -1,6 +1,7 @@
 #include "chess.h"
 
 figure boardMap[8][8];
+playerTeam currentMove;
 
 void render_board()
 {
@@ -22,6 +23,8 @@ void render_board()
 
 void set_figures()
 {
+    currentMove = white;
+
     int i, j;
 
     for(i = 0; i < 8; i++)
@@ -50,13 +53,33 @@ void set_figures()
     boardMap[5][7] = { bishop, white };
 
     boardMap[3][0] = { queen, black };
-    boardMap[3][7] = { queen, white };
+    boardMap[4][7] = { queen, white };
 
     boardMap[4][0] = { king, black };
-    boardMap[4][7] = { king, white };
+    boardMap[3][7] = { king, white };
 
+    fill_board();
+}
+
+// Зеркалит доску
+void fill_board()
+{
+    int i, j;
+    render_board();
     for(i = 0; i < 8; i++)
         for(j = 0; j < 8; j++)
             draw_figure(i, j, boardMap[i][j]);
 }
 
+void board_reverse()
+{
+    int i, j;
+    figure temp;
+    for(i = 0; i < 4; i++)
+        for(j = 0; j < 8; j++)
+        {
+            temp = boardMap[i][j];
+            boardMap[i][j] = boardMap[7 - i][7 - j];
+            boardMap[7 - i][7 - j] = temp;
+        }
+}

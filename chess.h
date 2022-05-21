@@ -42,12 +42,20 @@ struct figure
 };
 
 extern figure boardMap[8][8];
+extern playerTeam currentMove;
 
 //moves
+void set_move_cell(int cellX, int cellY, playerTeam team, bool** moves);
+bool is_cell_valid(int cellX, int cellY);
 bool** get_moves(int cellX, int cellY);
 void get_pawn_moves(int cellX, int cellY, playerTeam team, bool** moves);
 bool** moves_malloc();
 void moves_free(bool** moves);
+void move_handler(bool** moves, int cellX, int cellY);
+void move_figure(int firstX, int firstY, int  secondX, int secondY);
+void change_current_move();
+void moves_reverse(bool** moves);
+void get_knight_moves(int cellX, int cellY, playerTeam team, bool** moves);
 
 //cell
 const int CELL_SIZE = 60;
@@ -66,6 +74,8 @@ const int BOARD_BOTTOM = 480;
 extern figure figures[8][8];
 void render_board();
 void set_figures();
+void fill_board();
+void board_reverse();
 
 //figure
 void mark_figure(int cellX, int cellY);

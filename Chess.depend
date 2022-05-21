@@ -43,29 +43,30 @@
 1650695440 d:\cities - skylines\projects\chess\cell.h
 	"common.h"
 
-1652553791 source:c:\users\user\desktop\курсач\chess\chess\figure.c
+1652557858 source:c:\users\user\desktop\курсач\chess\chess\figure.c
 	"chess.h"
 
-1652556611 c:\users\user\desktop\курсач\chess\chess\chess.h
+1653114728 c:\users\user\desktop\курсач\chess\chess\chess.h
 	<graphics.h>
 	<stdio.h>
 
-1652553164 source:c:\users\user\desktop\курсач\chess\chess\board.c
+1653111990 source:c:\users\user\desktop\курсач\chess\chess\board.c
 	"chess.h"
 
-1652552606 source:c:\users\user\desktop\курсач\chess\chess\cell.c
+1653108831 source:c:\users\user\desktop\курсач\chess\chess\cell.c
 	"chess.h"
 
 1652519722 source:c:\users\user\desktop\курсач\chess\chess\main.c
 	"chess.h"
 
-1652557111 source:c:\users\user\desktop\курсач\chess\chess\clickhandler.c
+1653110890 source:c:\users\user\desktop\курсач\chess\chess\clickhandler.c
+	"chess.h"
+	"stdio.h"
+
+1653111690 source:c:\users\user\desktop\курсач\chess\chess\common.c
 	"chess.h"
 
-1652555991 source:c:\users\user\desktop\курсач\chess\chess\common.c
-	"chess.h"
-
-1652557776 source:c:\users\user\desktop\курсач\chess\chess\moves.c
+1653116682 source:c:\users\user\desktop\курсач\chess\chess\moves.c
 	"chess.h"
 	<stdio.h>
 
