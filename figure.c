@@ -1,5 +1,6 @@
 #include "chess.h"
 
+// Выделяет фигуру
 void mark_figure(int cellX, int cellY)
 {
     figure fig = boardMap[cellX][cellY];
@@ -8,6 +9,7 @@ void mark_figure(int cellX, int cellY)
     draw_figure(cellX, cellY, fig, LIGHTGREEN);
 }
 
+// Снимает выделение с фигуры
 void unmark_figure(int cellX, int cellY)
 {
     figure fig = boardMap[cellX][cellY];
@@ -16,6 +18,7 @@ void unmark_figure(int cellX, int cellY)
     draw_figure(cellX, cellY, fig);
 }
 
+// Рисует фигуру
 void draw_figure(int cellX, int cellY, figure figure, int border_color)
 {
     setcolor(border_color);

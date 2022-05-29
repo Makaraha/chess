@@ -3,6 +3,7 @@
 
 #ifndef CHESS_H_INCLUDED
 #define CHESS_H_INCLUDED
+#define TEAM_NAME_INDENT 15
 
 struct point
 {
@@ -47,7 +48,7 @@ extern playerTeam currentMove;
 //moves
 void set_move_cell(int cellX, int cellY, playerTeam team, bool** moves);
 bool is_cell_valid(int cellX, int cellY);
-bool** get_moves(int cellX, int cellY);
+void get_moves(int cellX, int cellY, bool** moves, bool all_moves = false);
 void get_pawn_moves(int cellX, int cellY, playerTeam team, bool** moves);
 bool** moves_malloc();
 void moves_free(bool** moves);
@@ -60,6 +61,9 @@ void get_bishop_moves(int cellX, int cellY, playerTeam, bool** moves);
 void get_rook_moves(int cellX, int cellY, playerTeam team, bool** moves);
 void get_queen_moves(int cellX, int cellY, playerTeam team, bool** moves);
 void get_king_moves(int cellX, int cellY, playerTeam team, bool** moves);
+void set_move_cell(int cellX, int cellY, playerTeam team, bool** moves, bool** enemyMoves);
+void get_moves_covering(playerTeam team, bool** moves);
+void remove_check_moves(int cellX, int cellY, bool** moves);
 
 //cell
 const int CELL_SIZE = 60;
@@ -80,6 +84,7 @@ void render_board();
 void set_figures();
 void fill_board();
 void board_reverse();
+point find_king(playerTeam team);
 
 //figure
 void mark_figure(int cellX, int cellY);
@@ -96,8 +101,31 @@ void draw_bishop(int x, int y);
 bool is_board(int x, int y);
 void click_handler();
 void board_click_handler(int x, int y);
+void menu_click_hanlder(int x, int y);
 
 //common
+extern int BACKGROUND_COLOR;
 bool is_in_rectangle(int x, int y, int left, int top, int right, int bottom);
+bool is_in_rectangle(int x, int y, rect rec);
+void fill_bg();
+void draw_text_by_center(int x, int y, char* text);
+void draw_menu_team(int color, playerTeam team);
+rect get_text_coords(int x, int y, char* text);
+rect get_surrender_coords(playerTeam team);
+playerTeam operator ! (playerTeam team);
+
+//menu
+const int TEXT_OVERHANG = 30;
+void render_menu();
+rect get_newgame_coords();
+void draw_menu_team(int color, playerTeam team);
+void draw_menu_functions();
+rect get_draw_coords(playerTeam team);
+
+//game_helper
+bool extern is_game_started;
+void start_game();
+void player_draw(playerTeam team);
+void finish_game(char* message);
 
 #endif // CHESS_H_INCLUDED

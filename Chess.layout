@@ -2,39 +2,45 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
 	<File name="board.c" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1634" topLine="42" />
+		<Cursor1 position="2233" topLine="57" />
 	</File>
 	<File name="board.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="223" topLine="0" />
 	</File>
 	<File name="cell.c" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="219" topLine="0" />
+		<Cursor1 position="1252" topLine="0" />
 	</File>
 	<File name="cell.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="75" topLine="0" />
 	</File>
 	<File name="chess.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="627" topLine="36" />
+		<Cursor1 position="838" topLine="25" />
 	</File>
-	<File name="clickhandler.c" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="694" topLine="0" />
+	<File name="clickhandler.c" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="2010" topLine="7" />
 	</File>
-	<File name="common.c" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor1 position="168" topLine="0" />
+	<File name="common.c" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor1 position="1071" topLine="14" />
 	</File>
 	<File name="common.h" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="183" topLine="0" />
 	</File>
 	<File name="figure.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="565" topLine="36" />
+		<Cursor1 position="459" topLine="0" />
 	</File>
 	<File name="figure.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="110" topLine="0" />
 	</File>
-	<File name="main.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
-		<Cursor1 position="242" topLine="0" />
+	<File name="gamehelper.c" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="1521" topLine="21" />
 	</File>
-	<File name="moves.c" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
-		<Cursor1 position="1569" topLine="47" />
+	<File name="main.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+		<Cursor1 position="212" topLine="0" />
+	</File>
+	<File name="menu.c" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+		<Cursor1 position="1462" topLine="24" />
+	</File>
+	<File name="moves.c" open="1" top="1" tabpos="6" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+		<Cursor1 position="2397" topLine="200" />
 	</File>
 </CodeBlocks_layout_file>

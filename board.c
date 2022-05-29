@@ -3,6 +3,7 @@
 figure boardMap[8][8];
 playerTeam currentMove;
 
+// Рисует доску
 void render_board()
 {
     int color = DARKGRAY;
@@ -21,6 +22,7 @@ void render_board()
     }
 }
 
+// Ставит фигуры в начальное положение
 void set_figures()
 {
     currentMove = white;
@@ -53,15 +55,15 @@ void set_figures()
     boardMap[5][7] = { bishop, white };
 
     boardMap[3][0] = { queen, black };
-    boardMap[4][7] = { queen, white };
+    boardMap[3][7] = { queen, white };
 
     boardMap[4][0] = { king, black };
-    boardMap[3][7] = { king, white };
+    boardMap[4][7] = { king, white };
 
     fill_board();
 }
 
-// Зеркалит доску
+// Заполняет доску фигурами
 void fill_board()
 {
     int i, j;
@@ -71,6 +73,7 @@ void fill_board()
             draw_figure(i, j, boardMap[i][j]);
 }
 
+// Зераклит доску
 void board_reverse()
 {
     int i, j;
@@ -82,4 +85,13 @@ void board_reverse()
             boardMap[i][j] = boardMap[7 - i][7 - j];
             boardMap[7 - i][7 - j] = temp;
         }
+}
+
+point find_king(playerTeam team)
+{
+    int i, j;
+    for(i = 0; i < 8; i++)
+        for(j = 0; j < 8; j++)
+            if(boardMap[i][j].type == king && boardMap[i][j].team == team)
+                return {i, j};
 }

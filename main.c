@@ -10,8 +10,9 @@ void init_graph()
 int main()
 {
     init_graph();
+    fill_bg();
+    render_menu();
     render_board();
-    set_figures();
     click_handler();
     closegraph();
 }
