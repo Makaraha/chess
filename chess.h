@@ -76,6 +76,8 @@ void merge_moves(bool** origin, bool** moves);
 void clear_moves(bool** moves);
 bool has_moves(bool** moves);
 gameOutcome get_game_status(playerTeam team);
+void is_castling_avaible(int kingX, int kingY, bool* right, bool* left);
+void make_castling(int rookX, int rookY, int kingX, int kingY);
 
 //cell
 const int CELL_SIZE = 60;

@@ -46,7 +46,7 @@
 1653845793 source:c:\users\user\desktop\курсач\chess\chess\figure.c
 	"chess.h"
 
-1653844994 c:\users\user\desktop\курсач\chess\chess\chess.h
+1653850018 c:\users\user\desktop\курсач\chess\chess\chess.h
 	<graphics.h>
 	<stdio.h>
 
@@ -59,14 +59,14 @@
 1653844854 source:c:\users\user\desktop\курсач\chess\chess\main.c
 	"chess.h"
 
-1653845430 source:c:\users\user\desktop\курсач\chess\chess\clickhandler.c
+1653845862 source:c:\users\user\desktop\курсач\chess\chess\clickhandler.c
 	"chess.h"
 	"stdio.h"
 
 1653842680 source:c:\users\user\desktop\курсач\chess\chess\common.c
 	"chess.h"
 
-1653845132 source:c:\users\user\desktop\курсач\chess\chess\moves.c
+1653850057 source:c:\users\user\desktop\курсач\chess\chess\moves.c
 	"chess.h"
 	<stdio.h>
 

@@ -22,11 +22,18 @@ void change_current_move()
 void move_figure(int firstX, int firstY, int secondX, int secondY)
 {
     figure fig = boardMap[firstX][firstY];
-    boardMap[firstX][firstY].type = empty;
-    boardMap[secondX][secondY] = fig;
+
     clear_cell(firstX, firstY);
     clear_cell(secondX, secondY);
-    draw_figure(secondX, secondY, fig);
+
+    if(boardMap[secondX][secondY].type == rook)
+        make_castling(secondX, secondY, firstX, firstY);
+    else
+    {
+        boardMap[firstX][firstY].type = empty;
+        boardMap[secondX][secondY] = fig;
+        draw_figure(secondX, secondY, fig);
+    }
 
     if(fig.type == pawn && (secondY == 0 || secondY == 7))
         transofrmate_pawn(secondX, secondY);
@@ -37,6 +44,30 @@ void move_figure(int firstX, int firstY, int secondX, int secondY)
         player_win(!currentMove);
     else if(outcome == stalemate)
         finish_game("Ничья");
+}
+
+void make_castling(int rookX, int rookY, int kingX, int kingY)
+{
+    figure king = boardMap[kingX][kingY];
+    figure rook = boardMap[rookX][rookY];
+
+    boardMap[kingX][kingY].type = empty;
+    boardMap[rookX][rookY].type = empty;
+
+    if(rookX > kingX)
+    {
+        boardMap[kingX + 2][kingY] = king;
+        boardMap[kingX + 1][kingY] = rook;
+        draw_figure(kingX + 2, kingY, king);
+        draw_figure(kingX + 1, kingY, rook);
+    }
+    else
+    {
+        boardMap[kingX - 2][kingY] = king;
+        boardMap[kingX - 1][kingY] = rook;
+        draw_figure(kingX - 2, kingY, king);
+        draw_figure(kingX - 1, kingY, rook);
+    }
 }
 
 // Возвращает матрицу ходов, которые может сделать фигура
@@ -157,6 +188,41 @@ bool has_moves(bool** moves)
     return false;
 }
 
+void is_castling_avaible(int kingX, int kingY, bool* right, bool* left)
+{
+    *right = true;
+    *left = true;
+
+    int trueX = boardMap[kingX][kingY].team == white ? 4 : 3;
+
+    if(kingX != trueX || kingY != 7)
+    {
+        *right = false;
+        *left = false;
+        return;
+    }
+
+    if(boardMap[0][7].type != rook)
+        *left = false;
+
+    if(boardMap[7][7].type != rook)
+        *right = false;
+
+    bool** enemy_moves = moves_malloc();
+    get_moves_covering(!boardMap[kingX][kingY].team, enemy_moves);
+
+    int i;
+    for(i = trueX + 1; i < 7; i++)
+        if(boardMap[i][7].type != empty || enemy_moves[i][7])
+            *right = false;
+
+    for(i = trueX - 1; i > 0; i--)
+        if(boardMap[i][7].type != empty || enemy_moves[i][7])
+            *left = false;
+
+    moves_free(enemy_moves);
+}
+
 // Заполняет матрицу ходов пешки
 void get_pawn_moves(int cellX, int cellY, playerTeam team, bool** moves)
 {
@@ -244,6 +310,15 @@ void get_king_moves(int cellX, int cellY, playerTeam team, bool** moves)
     set_move_cell(cellX, cellY + 1, team, moves);
     set_move_cell(cellX + 1, cellY, team, moves);
     set_move_cell(cellX, cellY - 1, team, moves);
+
+    bool left_castling;
+    bool right_castling;
+    is_castling_avaible(cellX, cellY, &right_castling, &left_castling);
+
+    if(right_castling)
+        moves[7][7] = true;
+    if(left_castling)
+        moves[0][7] = true;
 }
 
 // Разрешает или запрещает ход в ячейку
