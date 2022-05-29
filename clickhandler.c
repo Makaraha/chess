@@ -47,8 +47,8 @@ void menu_click_hanlder(int x, int y)
 // Обрабатывает нажатие на доску
 void board_click_handler(int x, int y)
 {
-    static int selectedX;
-    static int selectedY;
+    static int selectedX = -1;
+    static int selectedY = -1;
     static bool is_figure_selected = false;
     static bool** moves;
 
@@ -58,12 +58,12 @@ void board_click_handler(int x, int y)
     {
         unmark_figure(selectedX, selectedY);
         unmark_cells();
-        moves_free(moves);
         is_figure_selected = false;
         if(moves[cell.x][cell.y])
             move_figure(selectedX, selectedY, cell.x, cell.y);
         else if(is_board(x, y) && (cell.x != selectedX || cell.y != selectedY))
             board_click_handler(x, y);
+        moves_free(moves);
     }
     else if(boardMap[cell.x][cell.y].type != empty && boardMap[cell.x][cell.y].team == currentMove)
     {
@@ -74,7 +74,7 @@ void board_click_handler(int x, int y)
         for(i = 0; i < 8; i++)
             for(j = 0; j < 8; j++)
                 if(moves[i][j])
-                    mark_cell(i, j);
+                    mark_cell(i, j, COLOR(0, 90, 255));
         selectedX = cell.x;
         selectedY = cell.y;
         is_figure_selected = true;

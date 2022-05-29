@@ -43,36 +43,36 @@
 1650695440 d:\cities - skylines\projects\chess\cell.h
 	"common.h"
 
-1653732215 source:c:\users\user\desktop\курсач\chess\chess\figure.c
+1653808259 source:c:\users\user\desktop\курсач\chess\chess\figure.c
 	"chess.h"
 
-1653753093 c:\users\user\desktop\курсач\chess\chess\chess.h
+1653810401 c:\users\user\desktop\курсач\chess\chess\chess.h
 	<graphics.h>
 	<stdio.h>
 
 1653749910 source:c:\users\user\desktop\курсач\chess\chess\board.c
 	"chess.h"
 
-1653120531 source:c:\users\user\desktop\курсач\chess\chess\cell.c
+1653806832 source:c:\users\user\desktop\курсач\chess\chess\cell.c
 	"chess.h"
 
 1653740514 source:c:\users\user\desktop\курсач\chess\chess\main.c
 	"chess.h"
 
-1653754230 source:c:\users\user\desktop\курсач\chess\chess\clickhandler.c
+1653808237 source:c:\users\user\desktop\курсач\chess\chess\clickhandler.c
 	"chess.h"
 	"stdio.h"
 
 1653747499 source:c:\users\user\desktop\курсач\chess\chess\common.c
 	"chess.h"
 
-1653755282 source:c:\users\user\desktop\курсач\chess\chess\moves.c
+1653816813 source:c:\users\user\desktop\курсач\chess\chess\moves.c
 	"chess.h"
 	<stdio.h>
 
 1653745987 source:c:\users\user\desktop\курсач\chess\chess\menu.c
 	"chess.h"
 
-1653744511 source:c:\users\user\desktop\курсач\chess\chess\gamehelper.c
+1653810338 source:c:\users\user\desktop\курсач\chess\chess\gamehelper.c
 	"chess.h"
 

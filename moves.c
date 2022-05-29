@@ -28,6 +28,12 @@ void move_figure(int firstX, int firstY, int secondX, int secondY)
     clear_cell(secondX, secondY);
     draw_figure(secondX, secondY, fig);
     change_current_move();
+
+    gameOutcome outcome = get_game_status(currentMove);
+    if(outcome == mate)
+        player_win(!currentMove);
+    else if(outcome == stalemate)
+        finish_game("Ничья");
 }
 
 // Возвращает матрицу ходов, которые может сделать фигура
@@ -35,7 +41,7 @@ void get_moves(int cellX, int cellY, bool** moves, bool all_moves)
 {
     figure fig =  boardMap[cellX][cellY];
 
-    if(fig.team == black)
+    if(fig.team == black && !all_moves)
     {
         board_reverse();
         cellX = 7 - cellX;
@@ -64,18 +70,14 @@ void get_moves(int cellX, int cellY, bool** moves, bool all_moves)
             break;
     }
 
-    if(!all_moves)
-    {
-        bool** enemyMoves = moves_malloc();
-        get_moves_covering(!fig.team, enemyMoves);
-        remove_check_moves(cellX, cellY, moves);
-        moves_free(enemyMoves);
-    }
 
-    if(fig.team == black)
+    if(!all_moves)
+        remove_check_moves(cellX, cellY, moves);
+
+    if(fig.team == black && !all_moves)
     {
-        moves_reverse(moves);
         board_reverse();
+        moves_reverse(moves);
     }
 }
 
@@ -84,13 +86,12 @@ void remove_check_moves(int cellX, int cellY, bool** moves)
 {
     int i, j;
     figure fig = boardMap[cellX][cellY];
-    printf("\n");
+    bool** enemyMoves = moves_malloc();
     for(i = 0; i < 8; i++)
         for(j = 0; j < 8; j++)
         {
             if(moves[i][j])
             {
-                figure from = boardMap[cellX][cellY];
                 figure to = boardMap[i][j];
 
                 boardMap[i][j] = fig;
@@ -98,21 +99,59 @@ void remove_check_moves(int cellX, int cellY, bool** moves)
 
                 point kingCell = find_king(fig.team);
 
-                bool** enemyMoves = moves_malloc();
+                board_reverse();
                 get_moves_covering(!fig.team, enemyMoves);
-                if(enemyMoves[kingCell.x][kingCell.y])
-                {
-                    moves[i][j] = false;
-                    printf("fig %d %d\n", cellX, cellY);
-                    printf("check %d %d\n", i, j);
-                    printf("king %d %d\n", kingCell.x, kingCell.y);
-                }
-                moves_free(enemyMoves);
+                moves_reverse(enemyMoves);
 
-                boardMap[cellX][cellY] = from;
+                if(enemyMoves[kingCell.x][kingCell.y])
+                    moves[i][j] = false;
+                clear_moves(enemyMoves);
+
+                board_reverse();
+
+                boardMap[cellX][cellY] = fig;
                 boardMap[i][j] = to;
             }
         }
+    moves_free(enemyMoves);
+}
+
+// Возвращает статус игры. (Мат, пат или ничего)
+gameOutcome get_game_status(playerTeam team)
+{
+    bool** temp_moves = moves_malloc();
+    bool** enemy_moves = moves_malloc();
+    get_moves_covering(!team, enemy_moves);
+
+    int i, j;
+    for(i = 0; i < 8; i++)
+        for(j = 0; j < 8; j++)
+        {
+            if(boardMap[i][j].team == team && boardMap[i][j].type != empty)
+            {
+                get_moves(i, j, temp_moves);
+                if(has_moves(temp_moves))
+                   return nothing;
+                clear_moves(temp_moves);
+            }
+        }
+
+    point kingCell = find_king(team);
+    if(enemy_moves[kingCell.x][kingCell.y])
+        return mate;
+    return stalemate;
+}
+
+// Проверяет наличие ходов для данной матрицы ходов
+bool has_moves(bool** moves)
+{
+    int i, j;
+
+    for(i = 0; i < 8; i++)
+        for(j = 0; j < 8; j++)
+            if(moves[i][j])
+                return true;
+    return false;
 }
 
 // Заполняет матрицу ходов пешки
@@ -127,10 +166,11 @@ void get_pawn_moves(int cellX, int cellY, playerTeam team, bool** moves)
     if(is_cell_valid(cellX + 1, cellY - 1) && boardMap[cellX + 1][cellY - 1].type != empty)
         set_move_cell(cellX + 1, cellY - 1, team, moves);
 
-    if(is_cell_valid(cellX - 1, cellY + 1), boardMap[cellX - 1][cellY - 1].type != empty)
+    if(is_cell_valid(cellX - 1, cellY - 1), boardMap[cellX - 1][cellY - 1].type != empty)
         set_move_cell(cellX - 1, cellY - 1, team, moves);
 }
 
+// Запполняет матрицу ходов слона
 void get_knight_moves(int cellX, int cellY, playerTeam team, bool** moves)
 {
     set_move_cell(cellX - 2, cellY - 1, team, moves);
@@ -220,10 +260,36 @@ bool is_cell_valid(int cellX, int cellY)
 void get_moves_covering(playerTeam team, bool** moves)
 {
     int i, j;
+
+    bool** temp_moves = moves_malloc();
+
     for(i = 0; i < 8; i++)
         for(j = 0; j < 8; j++)
             if(boardMap[i][j].team == team && boardMap[i][j].type != empty)
-                get_moves(i, j, moves, true);
+            {
+                get_moves(i, j, temp_moves, true);
+                merge_moves(moves, temp_moves);
+                clear_moves(temp_moves);
+            }
+    moves_free(temp_moves);
+}
+
+// Объединяет две матрицы ходов
+void merge_moves(bool** origin, bool** moves)
+{
+    int i, j;
+    for(i = 0; i < 8; i++)
+        for(j = 0; j < 8; j++)
+            origin[i][j] = origin[i][j] || moves[i][j];
+}
+
+// Очищает матрицу ходов
+void clear_moves(bool** moves)
+{
+    int i, j;
+    for(i = 0; i < 8; i++)
+        for(j = 0; j < 8; j++)
+            moves[i][j] = false;
 }
 
 // Выделяет память для матрицы ходов

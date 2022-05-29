@@ -45,10 +45,10 @@ void clear_cell(int cellX, int cellY)
     bar(rect.left, rect.top, rect.right, rect.bottom);
 }
 
-void mark_cell(int cellX, int cellY)
+void mark_cell(int cellX, int cellY, int color)
 {
     rect cell = get_cell_coords(cellX, cellY);
-    setcolor(LIGHTGREEN);
+    setcolor(color);
     rectangle(cell.left + 4, cell.top + 4, cell.right - 4, cell.bottom - 4);
 }
 

@@ -30,6 +30,13 @@ enum figureType
     bishop // Слон
 };
 
+enum gameOutcome
+{
+    nothing,
+    mate,
+    stalemate
+};
+
 enum playerTeam
 {
     black = BLACK,
@@ -41,6 +48,7 @@ struct figure
     figureType type;
     playerTeam team;
 };
+
 
 extern figure boardMap[8][8];
 extern playerTeam currentMove;
@@ -64,6 +72,10 @@ void get_king_moves(int cellX, int cellY, playerTeam team, bool** moves);
 void set_move_cell(int cellX, int cellY, playerTeam team, bool** moves, bool** enemyMoves);
 void get_moves_covering(playerTeam team, bool** moves);
 void remove_check_moves(int cellX, int cellY, bool** moves);
+void merge_moves(bool** origin, bool** moves);
+void clear_moves(bool** moves);
+bool has_moves(bool** moves);
+gameOutcome get_game_status(playerTeam team);
 
 //cell
 const int CELL_SIZE = 60;
@@ -72,7 +84,7 @@ void clear_cell(int cellX, int cellY);
 point get_cell_center(int cellX, int cellY);
 rect get_cell_coords(int cellX, int cellY);
 point get_cell_by_coords(int x, int y);
-void mark_cell(int cellX, int cellY);
+void mark_cell(int cellX, int cellY, int color);
 void unmark_cell(int cellX, int cellY);
 void unmark_cells();
 
@@ -127,5 +139,6 @@ bool extern is_game_started;
 void start_game();
 void player_draw(playerTeam team);
 void finish_game(char* message);
+void player_win(playerTeam team);
 
 #endif // CHESS_H_INCLUDED

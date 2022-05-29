@@ -6,7 +6,7 @@ void mark_figure(int cellX, int cellY)
     figure fig = boardMap[cellX][cellY];
     if(fig.type == empty)
         return;
-    draw_figure(cellX, cellY, fig, LIGHTGREEN);
+    draw_figure(cellX, cellY, fig, COLOR(0, 90, 255));
 }
 
 // Снимает выделение с фигуры
