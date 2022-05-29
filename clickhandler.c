@@ -81,6 +81,26 @@ void board_click_handler(int x, int y)
     }
 }
 
+figureType pawn_transform_handler()
+{
+    int x, y;
+    while(true)
+    {
+        if(ismouseclick(WM_LBUTTONUP))
+        {
+            getmouseclick(WM_LBUTTONUP, x, y);
+            if(is_in_rectangle(x, y, 48, 60, 108, 120))
+                return bishop;
+            else if(is_in_rectangle(x, y, 48, 160, 108, 220))
+                return queen;
+            else if(is_in_rectangle(x, y, 48, 260, 108, 320))
+                return rook;
+            else if(is_in_rectangle(x, y, 48, 360, 108, 420))
+                return knight;
+        }
+    }
+}
+
 // ѕровер€ет, лежат ли координаты x, y внутри доски
 bool is_board(int x, int y)
 {

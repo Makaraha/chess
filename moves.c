@@ -27,8 +27,11 @@ void move_figure(int firstX, int firstY, int secondX, int secondY)
     clear_cell(firstX, firstY);
     clear_cell(secondX, secondY);
     draw_figure(secondX, secondY, fig);
-    change_current_move();
 
+    if(fig.type == pawn && (secondY == 0 || secondY == 7))
+        transofrmate_pawn(secondX, secondY);
+
+    change_current_move();
     gameOutcome outcome = get_game_status(currentMove);
     if(outcome == mate)
         player_win(!currentMove);

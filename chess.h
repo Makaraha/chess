@@ -99,6 +99,7 @@ void board_reverse();
 point find_king(playerTeam team);
 
 //figure
+void transofrmate_pawn(int cellX, int cellY);
 void mark_figure(int cellX, int cellY);
 void unmark_figure(int cellX, int cellY);
 void draw_figure(int cellX, int cellY, figure figure, int border_color = BLACK);
@@ -114,6 +115,7 @@ bool is_board(int x, int y);
 void click_handler();
 void board_click_handler(int x, int y);
 void menu_click_hanlder(int x, int y);
+figureType pawn_transform_handler();
 
 //common
 extern int BACKGROUND_COLOR;
@@ -125,6 +127,7 @@ void draw_menu_team(int color, playerTeam team);
 rect get_text_coords(int x, int y, char* text);
 rect get_surrender_coords(playerTeam team);
 playerTeam operator ! (playerTeam team);
+void* screenshot();
 
 //menu
 const int TEXT_OVERHANG = 30;
@@ -133,12 +136,14 @@ rect get_newgame_coords();
 void draw_menu_team(int color, playerTeam team);
 void draw_menu_functions();
 rect get_draw_coords(playerTeam team);
+void clear_menu_bar();
 
 //game_helper
 bool extern is_game_started;
 void start_game();
 void player_draw(playerTeam team);
 void finish_game(char* message);
+void print_message(char* message);
 void player_win(playerTeam team);
 
 #endif // CHESS_H_INCLUDED

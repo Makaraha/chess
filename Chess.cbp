@@ -48,14 +48,8 @@
 		<Unit filename="board.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="board.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
 		<Unit filename="cell.c">
 			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="cell.h">
-			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="chess.h" />
 		<Unit filename="clickhandler.c">
@@ -64,14 +58,8 @@
 		<Unit filename="common.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="common.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
 		<Unit filename="figure.c">
 			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="figure.h">
-			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="gamehelper.c">
 			<Option compilerVar="CC" />

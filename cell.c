@@ -1,5 +1,6 @@
 #include "chess.h"
 
+// ¬озращает цвет €чейки
 int get_cell_color(int cellX, int cellY)
 {
     if(cellX % 2 != cellY % 2)
@@ -7,6 +8,7 @@ int get_cell_color(int cellX, int cellY)
     return DARKGRAY;
 }
 
+// ¬озвращает координаты центра €чейка
 point get_cell_center(int cellX, int cellY)
 {
     point point;
@@ -17,6 +19,7 @@ point get_cell_center(int cellX, int cellY)
     return point;
 }
 
+// ¬озвращает координаты €чейки
 rect get_cell_coords(int cellX, int cellY)
 {
     rect rect;
@@ -27,6 +30,7 @@ rect get_cell_coords(int cellX, int cellY)
     return rect;
 }
 
+// ¬озвращает номер €чейки по координаттам
 point get_cell_by_coords(int x, int y)
 {
     point cellInd;
@@ -37,6 +41,7 @@ point get_cell_by_coords(int x, int y)
     return cellInd;
 }
 
+// ќчищает €чейку
 void clear_cell(int cellX, int cellY)
 {
     int color = get_cell_color(cellX, cellY);
@@ -45,6 +50,7 @@ void clear_cell(int cellX, int cellY)
     bar(rect.left, rect.top, rect.right, rect.bottom);
 }
 
+// ѕомечает €чейку
 void mark_cell(int cellX, int cellY, int color)
 {
     rect cell = get_cell_coords(cellX, cellY);
@@ -52,6 +58,7 @@ void mark_cell(int cellX, int cellY, int color)
     rectangle(cell.left + 4, cell.top + 4, cell.right - 4, cell.bottom - 4);
 }
 
+// —нимает выделение с €чейки
 void unmark_cell(int cellX, int cellY)
 {
     rect cell = get_cell_coords(cellX, cellY);
@@ -60,6 +67,7 @@ void unmark_cell(int cellX, int cellY)
     rectangle(cell.left + 4, cell.top + 4, cell.right - 4, cell.bottom - 4);
 }
 
+// —нимает выделение со всех €чеек
 void unmark_cells()
 {
     int i, j;

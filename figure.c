@@ -1,5 +1,47 @@
 #include "chess.h"
 
+void transofrmate_pawn(int cellX, int cellY)
+{
+    int xOverhang = 50;
+    int yOverhang = 180;
+
+    void* buffer = screenshot();
+
+    setcolor(WHITE);
+    print_message("Выберите фигуру");
+    clear_menu_bar();
+
+    rectangle(48, 60, 108, 120);
+    rectangle(48, 160, 108, 220);
+    rectangle(48, 260, 108, 320);
+    rectangle(48, 360, 108, 420);
+
+    draw_bishop(48, 60);
+    draw_queen(48, 160);
+    draw_rook(48, 260);
+    draw_knight(48, 360);
+
+    boardMap[cellX][cellY].type = pawn_transform_handler();
+    putimage(0, 0, buffer, COPY_PUT);
+    clear_menu_bar();
+    clear_cell(cellX, cellY);
+    draw_figure(cellX, cellY, boardMap[cellX][cellY]);
+
+    if(boardMap[cellX][cellY].team == black)
+    {
+        draw_menu_team(LIGHTGREEN, white);
+        draw_menu_team(WHITE, black);
+    }
+    else
+    {
+        draw_menu_team(LIGHTGREEN, black);
+        draw_menu_team(WHITE, white);
+    }
+
+    draw_menu_functions();
+    free(buffer);
+}
+
 // Выделяет фигуру
 void mark_figure(int cellX, int cellY)
 {
